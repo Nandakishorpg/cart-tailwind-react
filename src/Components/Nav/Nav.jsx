@@ -3,7 +3,7 @@ import React from "react";
 export default function Nav() {
   return (
     <>
-      <div className="nav_Wrapper h-16 p-5  bg-indigo-400 flex justify-between rounded-lg  border-red-500 ">
+      <div className="nav_Wrapper h-16 p-5  bg-indigo-400 flex justify-between   border-red-500 ">
         <div className="flex  gap-3 items-center">
           <img
             src="https://media.istockphoto.com/id/1151942531/es/vector/icono-del-carrito-de-compras-vector.jpg?s=612x612&w=0&k=20&c=-WmNQsB-Gf4xwMM8np8x4tFIUgx71Tf-RoDfmRK6XfM="
