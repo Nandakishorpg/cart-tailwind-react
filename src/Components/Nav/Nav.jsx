@@ -14,10 +14,13 @@ export default function Nav() {
           <span className="text-black">Shop Here</span>
         </div>
         <div className="flex gap-3   items-center  text-white">
-          <Link to="/mycart">
-            <span className="text-black">Cart</span>
+          <Link to="/">
+            {" "}
+            <span className="text-black">Products</span>
           </Link>
-          <span className="text-black">My-Orders</span>
+          <Link to="/mycart">
+            <span className="text-green-900">My Cart</span>
+          </Link>
         </div>
       </div>
     </>

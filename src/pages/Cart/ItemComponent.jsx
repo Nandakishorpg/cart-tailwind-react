@@ -1,6 +1,11 @@
 import React from "react";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
-export default function ItemComponent({ array }) {
+export default function ItemComponent({ array, handle_remove }) {
+  const handleRemoveCart = (index, value) => {
+    console.log(value);
+    handle_remove(value.id);
+  };
   return (
     <div className="flex flex-row gap-14 flex-wrap justify-center">
       {array &&
@@ -20,14 +25,24 @@ export default function ItemComponent({ array }) {
 
               <span>{value?.category}</span>
 
-              <div className="flex justify-center">
+              <div className="flex gap-8 justify-center">
                 <button
                   onClick={() => {
                     handleAddCart(index, value);
                   }}
-                  className="bg-green-300  border-gray-900 w-4/5 text-stone-700 shadow-lg rounded-lg p-3 w-70"
+                  className="bg-fuchsia-950 h-12  border-gray-900 w-4/5 text-white shadow-lg rounded-lg p-3 w-70"
                 >
                   Buy Now
+                </button>
+                <button
+                  onClick={() => {
+                    handleRemoveCart(index, value);
+                  }}
+                  className="bg-red-400 h-12 flex    items-center  border-gray-900 w-4/5 text-white shadow-lg rounded-lg p-3 w-70"
+                >
+                  <span>Remove</span>
+
+                  <MdRemoveShoppingCart />
                 </button>
               </div>
             </div>

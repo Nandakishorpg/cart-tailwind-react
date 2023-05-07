@@ -17,8 +17,18 @@ export default function MyCart() {
       }
     }
     setCartState(cartItems);
+    
   }, []);
-  console.log(cartState);
+  console.log("state>>>>",cartState);
+  const handleRemoveCart = async (index) => {
+    console.log(index)
+    const key = `ProductItem-${index}`;
+    console.log("Key of Item to remove>>", key);
+    localStorage.removeItem(key);
+  
+    window.location.reload()
+   
+  };
 
   return (
     <>
@@ -32,7 +42,7 @@ export default function MyCart() {
           </span>
         </div>
 
-        <ItemComponent array={cartState} />
+        <ItemComponent handle_remove={handleRemoveCart} array={cartState} />
       </div>
     </>
   );
