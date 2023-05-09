@@ -22,17 +22,18 @@ export default function Products() {
 
   return (
     <>
-      <div className="px-16">
-        <Nav />
-      </div>
-
-      <div className="bg-white p-16 flex-col  shadow-lg rounded-lg">
-        <div className="w-full h-14 flex justify-center content-center shadow-xl rounded-md mb-20 bg-stone-100">
-          <span className=" text-black font-medium flex text-lg items-center">
-            Products Listing
-          </span>
+      <div className="container  mx-auto">
+        <div className="pt-4 ">
+          <Nav />
         </div>
-        <CardComponent array={products} />
+        <div className="bg-white pt-14 flex-col  shadow-lg rounded-lg">
+          <div className="w-full h-14 flex justify-center content-center shadow-xl rounded-md mb-20 bg-stone-100">
+            <span className=" text-black font-medium flex text-lg items-center">
+              Products Listing
+            </span>
+          </div>
+          <CardComponent array={products} />
+        </div>
       </div>
     </>
   );

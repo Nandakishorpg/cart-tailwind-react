@@ -1,15 +1,20 @@
-import React from "react";
+import { React, useContext } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { MyContext } from "../../contexts/Cart_Context";
 
-export default function ItemComponent({ array, handle_remove }) {
+export default function ItemComponent() {
+  const { cartStore, setCartStore } = useContext(MyContext);
+  console.log(cartStore);
   const handleRemoveCart = (index, value) => {
-    console.log(value);
-    handle_remove(value.id);
+    const cpyState = [...cartStore];
+    cpyState.splice(index, 1);
+    setCartStore(cpyState);
+    console.log("cpyState>>>>>>", cpyState);
   };
   return (
     <div className="flex flex-row gap-14 flex-wrap justify-center">
-      {array &&
-        array.map((value, index) => (
+      {cartStore &&
+        cartStore.map((value, index) => (
           <div
             className="card1 bg-stone-100 p-4 w-64  justify-between  flex flex-col rounded-lg shadow-lg mb-4 border"
             key={index}

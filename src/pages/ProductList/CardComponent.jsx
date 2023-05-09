@@ -1,23 +1,28 @@
-import React from "react";
+import { React, useContext } from "react";
+import { MyContext } from "../../contexts/Cart_Context";
 
 export default function CardComponent({ array }) {
   // let addToCart = [];
-
+  const { cartStore, setCartStore } = useContext(MyContext);
+  // console.log(cartStore);
   const handleAddCart = (index, value) => {
-    const addToCart = [
-      {
-        id: index,
-        title: value.title,
-        price: value.price,
-        image: value.image,
-      },
-    ];
-   
+    const addToCart = {
+      id: value.id,
+      title: value.title,
+      price: value.price,
+      image: value.image,
+    };
 
     console.log(index);
-
-    localStorage.setItem(`ProductItem-${index}`, JSON.stringify(addToCart));
+    const uniqueId = cartStore.filter((array) => array.id === value.id);
+    console.log(uniqueId);
+    if (uniqueId.length >= 1) {
+      console.log("present")
+    } else {
+      setCartStore([...cartStore, addToCart]);
+    }
   };
+  console.log("cartStore",cartStore);
   return (
     <div className="flex flex-row gap-14 flex-wrap justify-center">
       {array &&
@@ -27,7 +32,7 @@ export default function CardComponent({ array }) {
             key={index}
           >
             <img
-              className="h-56 w-auto rounded-lg shadow-lg"
+              className="h-48 w-auto rounded-lg shadow-lg"
               src={value?.image}
               alt=""
             />
@@ -42,7 +47,7 @@ export default function CardComponent({ array }) {
                   onClick={() => {
                     handleAddCart(index, value);
                   }}
-                  className="bg-green-300  border-gray-900 w-4/5 text-stone-700 shadow-lg rounded-lg p-3 w-70"
+                  className="bg-green-300  border-gray-900 w-3/5 text-stone-700 shadow-lg rounded-lg p-3 w-70"
                 >
                   Add To cart
                 </button>
