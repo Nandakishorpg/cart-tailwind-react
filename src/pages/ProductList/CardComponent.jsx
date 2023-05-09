@@ -13,16 +13,25 @@ export default function CardComponent({ array }) {
       image: value.image,
     };
 
-    console.log(index);
-    const uniqueId = cartStore.filter((array) => array.id === value.id);
-    console.log(uniqueId);
-    if (uniqueId.length >= 1) {
-      console.log("present")
-    } else {
+    console.log(value.id);
+    //  ---------------------------
+    // const idExists = cartStore.includes((item) => item.id === value.id); //returns true or false..but need to check with the exact o0bject not the property
+    // -----------------------------------
+    const idExists = cartStore.some((item) => item.id === value.id); //returns true or false--best method
+    console.log(idExists)
+    if (!idExists) {
       setCartStore([...cartStore, addToCart]);
     }
+
+    // --------------------------
+    // const filteredArray = cartStore.filter((array) => array.id === value.id); //returns the filtered array that satisfies the condition
+    // const idExists = filteredArray.length > 0; //return true or false
+    // console.log(idExists);
+    // if (!idExists) {
+    //   setCartStore([...cartStore, addToCart]);
+    // }
   };
-  console.log("cartStore",cartStore);
+  console.log("cartStore", cartStore);
   return (
     <div className="flex flex-row gap-14 flex-wrap justify-center">
       {array &&
