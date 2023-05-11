@@ -1,5 +1,7 @@
 import { React, useContext } from "react";
 import { MyContext } from "../../contexts/Cart_Context";
+import ToastComponent from "../../Components/ToastComponent";
+import { toast } from "react-toastify";
 
 export default function CardComponent({ array }) {
   // let addToCart = [];
@@ -21,6 +23,8 @@ export default function CardComponent({ array }) {
     console.log(idExists)
     if (!idExists) {
       setCartStore([...cartStore, addToCart]);
+    toast.success("Product added to the cart")
+
     }
 
     // --------------------------
@@ -64,6 +68,7 @@ export default function CardComponent({ array }) {
             </div>
           </div>
         ))}
+        <ToastComponent/>
     </div>
   );
 }

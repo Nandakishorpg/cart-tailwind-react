@@ -1,6 +1,8 @@
 import { React, useContext } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { MyContext } from "../../contexts/Cart_Context";
+import ToastComponent from "../../Components/ToastComponent";
+import { toast } from "react-toastify";
 
 export default function ItemComponent() {
   const { cartStore, setCartStore } = useContext(MyContext);
@@ -8,6 +10,8 @@ export default function ItemComponent() {
   const handleRemoveCart = (index, value) => {
     const cpyState = [...cartStore];
     cpyState.splice(index, 1);
+    toast.warning("Item removed from the cart");
+
     setCartStore(cpyState);
     console.log("cpyState>>>>>>", cpyState);
   };
@@ -53,6 +57,7 @@ export default function ItemComponent() {
             </div>
           </div>
         ))}
+      <ToastComponent />
     </div>
   );
 }
